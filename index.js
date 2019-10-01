@@ -1,10 +1,11 @@
 
 const express = require('express');
-const app = express();
-const fs = require('fs');
-const path = require('path');
 const history = require('connect-history-api-fallback');
 
-app.use('/', history(), express.static('../sol-community-dashboard/dist'));
+const app = express();
 
-app.listen(3000);
+const arguments = process.argv.slice(2);
+app.use(history());
+app.use(express.static(arguments[0]));
+const port = arguments[1];
+app.listen(port, () => console.log('serve-spa is listening on ' + port));
