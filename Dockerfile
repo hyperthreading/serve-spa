@@ -7,4 +7,4 @@ ADD ./package.json ./package.json
 RUN cd ./ && yarn
 COPY ./ ./
 
-CMD [ "node", "/app" ]
+ENTRYPOINT ["node", "/app"]
